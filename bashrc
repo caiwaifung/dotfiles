@@ -161,7 +161,7 @@ alias l="ls"
 alias vi="vim"
 alias ga="git add"
 alias gs="git status"
-alias gc="git commit"
+alias gc="git commit -m"
 alias gp="git push"
 alias gpull="git pull"
 set -o vi
