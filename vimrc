@@ -23,6 +23,7 @@ set nobackup
 set noswapfile
 set autochdir
 "set encoding=utf8
+au BufNewFile,BufRead *.rs set filetype=rust
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Display
@@ -73,6 +74,10 @@ function! Compile()
         execute '!gcc % -o %:t:r -Wall -Wconversion -Wextra -O2 --std=c99'
         return
     endif
+    if (&filetype == 'rust')
+        execute '!rustc %'
+        return
+    endif
     if (&filetype == 'tex')
         execute '!pdflatex %'
         execute '!rm %:t:r.aux %:t:r.nav %:t:r.out %:t:r.snm %:t:r.toc %:t:r.log'
@@ -89,7 +94,7 @@ endfunction
 
 function! Run(arg)
     execute 'w'
-    if (&filetype == 'c' || &filetype == 'cpp' || &filetype == 'cc')
+    if (&filetype == 'c' || &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'rust')
         execute '!./%:t:r' . a:arg
         return
     endif
