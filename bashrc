@@ -165,3 +165,15 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gpull="git pull"
 set -o vi
+
+function hlrun {
+    if [[ $# != 2 && $# != 3 ]]; then
+        echo 'usage: hlrun [pattern] [command] [[color]]'
+    else
+        local c=31
+        if [[ $# == 3 ]]; then
+            c=$3
+        fi
+        script -q /dev/null ${2} | sed ''s/$1/`printf "\e[${c}m$1\e[0m"`/g''
+    fi
+}
