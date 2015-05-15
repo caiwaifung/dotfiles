@@ -158,6 +158,8 @@ fi
 
 
 alias l="ls"
+alias c="cd"
+alias v="vim"
 alias vi="vim"
 alias ga="git add"
 alias gs="git status"
