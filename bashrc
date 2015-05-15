@@ -165,6 +165,7 @@ alias ga="git add"
 alias gs="git status"
 alias gc="git commit -m"
 alias gp="git push"
+alias gd="git diff"
 alias gpull="git pull"
 set -o vi
 
