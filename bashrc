@@ -140,7 +140,7 @@ function __promptline {
             local msg=" $cl1 "" Exit Code: ""$last_exit_code $end"
             echo `printf "$msg"`
         fi
-        echo ""
+        #echo ""
     fi
     export __last_history_dump=$h
 
