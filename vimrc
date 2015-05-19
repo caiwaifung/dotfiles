@@ -131,3 +131,9 @@ endif
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_cpp_compiler_options=" -Wall -Wextra -Wconversion -std=c++0x"
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Plugin 'davidhalter/jedi-vim'
+filetype plugin indent on
