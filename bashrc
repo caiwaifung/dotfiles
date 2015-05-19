@@ -59,10 +59,10 @@ function __promptline_cwd {
     local truncation="..."
     local part_count=0
     local formatted_cwd=""
-    local dir_sep="/"
+    #local dir_sep="/"
     local tilde="~"
     #local truncation="···"
-    #local dir_sep="  "
+    local dir_sep="  "
 
     local cwd="${PWD/#$HOME/$tilde}"
 
@@ -117,16 +117,16 @@ function __promptline {
     local a_fg="${wrap}38;5;222${end_wrap}"
     local a_bg="${wrap}48;5;241${end_wrap}"
     local a_sep_fg="${wrap}38;5;241${end_wrap}"
-    local b_fg="${wrap}38;5;12${end_wrap}"
-    local b_bg="${wrap}48;5;240${end_wrap}"
-    local b_sep_fg="${wrap}38;5;240${end_wrap}"
-    local c_fg="${wrap}38;5;11${end_wrap}"
-    local c_bg="${wrap}48;5;238${end_wrap}"
-    local c_sep_fg="${wrap}38;5;238${end_wrap}"
+    local b_fg="${wrap}38;5;0${end_wrap}"
+    local b_bg="${wrap}48;5;239${end_wrap}"
+    local b_sep_fg="${wrap}38;5;239${end_wrap}"
+    local c_fg="${wrap}38;5;136${end_wrap}"
+    local c_bg="${wrap}48;5;237${end_wrap}"
+    local c_sep_fg="${wrap}38;5;237${end_wrap}"
     local warn_fg="${wrap}38;5;232${end_wrap}"
     local warn_bg="${wrap}48;5;1${end_wrap}"
     local warn_sep_fg="${wrap}38;5;1${end_wrap}"
-    local y_fg="${wrap}38;5;51${end_wrap}"
+    local y_fg="${wrap}38;5;88${end_wrap}"
     local y_bg="${wrap}48;5;236${end_wrap}"
     local y_sep_fg="${wrap}38;5;236${end_wrap}"
 
@@ -134,10 +134,10 @@ function __promptline {
     local h=`history | tail -n 2`
     if [[ "$__last_history_dump" != "" && "$h" != "$__last_history_dump" ]]; then
         if [[ $last_exit_code != 0 ]]; then
-            local cl1="\e[38;5;233m\e[48;5;4m"
-            local cl3="\e[38;5;4m"
+            local cl1="\e[38;5;7m\e[48;5;232m"
+            local cl2="\e[38;5;52m"
             local end="\e[0m"
-            local msg=" $cl1 "" Exit Code: ""$last_exit_code $end"
+            local msg=" $cl1""${alt_sep} Exit Code: ""$cl2$last_exit_code $end"
             echo `printf "$msg"`
         fi
         #echo ""
