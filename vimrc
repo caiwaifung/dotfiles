@@ -57,7 +57,7 @@ set foldmethod=marker
 " => Keys
 """""""""""""""""""""""""""""""""""""""""""""""""
 noremap <C-C> <Esc>:noh<CR><Esc>
-let mapleader=';'
+let mapleader=' '
 let g:EasyMotion_leader_key='<Leader>' 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
