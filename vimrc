@@ -15,6 +15,8 @@ set incsearch
 set noerrorbells
 set visualbell
 
+set mouse=a
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => File
 """""""""""""""""""""""""""""""""""""""""""""""""

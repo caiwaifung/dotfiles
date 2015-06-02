@@ -157,6 +157,7 @@ if [[ ! "$PROMPT_COMMAND" == *__promptline* ]]; then
 fi
 
 
+alias o="open"
 alias l="ls"
 alias c="cd"
 alias v="vim"
