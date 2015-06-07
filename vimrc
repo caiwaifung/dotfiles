@@ -31,7 +31,7 @@ au BufNewFile,BufRead *.rs set filetype=rust
 " => Display
 """""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-colorscheme desert
+colorscheme default
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
 hi MatchParen ctermbg=red
@@ -69,11 +69,11 @@ let g:EasyMotion_leader_key='<Leader>'
 function! Compile()
     execute 'w'
     if (&filetype == 'cpp' || &filetype == 'cc')
-        execute '!g++ % -o %:t:r -Wall -Wconversion -Wextra -O2 --std=c++0x'
+        execute '!g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 --std=c++0x'
         return
     endif
     if (&filetype == 'c')
-        execute '!gcc % -o %:t:r -Wall -Wconversion -Wextra -O2 --std=c99'
+        execute '!gcc % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 --std=c99'
         return
     endif
     if (&filetype == 'rust')
