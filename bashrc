@@ -159,6 +159,7 @@ fi
 
 alias o="open"
 alias l="ls"
+alias a="ls -la"
 alias c="cd"
 alias v="vim"
 alias vi="vim"
@@ -167,7 +168,7 @@ alias gs="git status"
 alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
-alias gpull="git pull"
+alias gpu="git pull"
 set -o vi
 
 function hlrun {
