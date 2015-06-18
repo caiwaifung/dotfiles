@@ -35,6 +35,8 @@ colorscheme molokai
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
 hi MatchParen ctermbg=red
+hi SyntasticError cterm=NONE ctermbg=red
+hi SyntasticWarning cterm=NONE ctermbg=black
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Text
