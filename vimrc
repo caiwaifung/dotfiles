@@ -88,9 +88,7 @@ function! Compile()
         return
     endif
     if (&filetype == 'haskell')
-        execute '!ghc %'
-        execute '!rm %:t:r.hi'
-        execute '!rm %:t:r.o'
+        execute '!ghc % ; rm %:t:r.hi ; rm %:t:r.o'
         return
     endif
     echom 'Unable to compile! (unknown filetype [' . &filetype . '])'
