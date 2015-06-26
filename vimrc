@@ -83,6 +83,10 @@ function! Compile()
         execute '!rustc %'
         return
     endif
+    if (&filetype == 'scala')
+        execute '!scalac %'
+        return
+    endif
     if (&filetype == 'tex')
         execute '!pdflatex %'
         execute '!rm %:t:r.aux %:t:r.nav %:t:r.out %:t:r.snm %:t:r.toc %:t:r.log'
@@ -99,6 +103,10 @@ function! Run(arg)
     execute 'w'
     if (&filetype == 'c' || &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'rust')
         execute '!./%:t:r' . a:arg
+        return
+    endif
+    if (&filetype == 'scala')
+        execute '!scala %:t:r'
         return
     endif
     if (&filetype == 'python')
