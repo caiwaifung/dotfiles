@@ -26,6 +26,7 @@ set noswapfile
 set autochdir
 "set encoding=utf8
 au BufNewFile,BufRead *.rs set filetype=rust
+au BufNewFile,BufRead *.scala set filetype=scala
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Display
