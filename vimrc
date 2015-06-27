@@ -106,7 +106,7 @@ function! Run(arg)
         return
     endif
     if (&filetype == 'scala')
-        execute '!scala %:t:r'
+        execute '!scala %:t:r' . a:arg
         return
     endif
     if (&filetype == 'python')
@@ -119,7 +119,7 @@ function! Run(arg)
         return
     endif
     if (&filetype == 'sh')
-        execute '!bash %'
+        execute '!bash %' . a:arg
     endif
     echom 'Unable to run! (unknown filetype [' . &filetype . '])'
 endfunction
