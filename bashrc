@@ -169,6 +169,7 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gpu="git pull"
+alias rmclass="rm -r *.class"
 set -o vi
 
 function hlrun {

@@ -27,6 +27,7 @@ set autochdir
 "set encoding=utf8
 au BufNewFile,BufRead *.rs set filetype=rust
 au BufNewFile,BufRead *.scala set filetype=scala
+au Filetype scala setlocal ts=2 sts=2 sw=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Display
@@ -72,28 +73,28 @@ let g:EasyMotion_leader_key='<Leader>'
 function! Compile()
     execute 'w'
     if (&filetype == 'cpp' || &filetype == 'cc')
-        execute '!g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 -DDEBUG --std=c++0x'
+        execute '!time g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 -DDEBUG --std=c++0x'
         return
     endif
     if (&filetype == 'c')
-        execute '!gcc % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 -DDEBUG --std=c99'
+        execute '!time gcc % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 -DDEBUG --std=c99'
         return
     endif
     if (&filetype == 'rust')
-        execute '!rustc %'
+        execute '!time rustc %'
         return
     endif
     if (&filetype == 'scala')
-        execute '!scalac %'
+        execute '!time scalac %'
         return
     endif
     if (&filetype == 'tex')
-        execute '!pdflatex %'
+        execute '!time pdflatex %'
         execute '!rm %:t:r.aux %:t:r.nav %:t:r.out %:t:r.snm %:t:r.toc %:t:r.log'
         return
     endif
     if (&filetype == 'haskell')
-        execute '!ghc % ; rm %:t:r.hi ; rm %:t:r.o'
+        execute '!time ghc % ; rm %:t:r.hi ; rm %:t:r.o'
         return
     endif
     echom 'Unable to compile! (unknown filetype [' . &filetype . '])'
