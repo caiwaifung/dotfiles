@@ -170,6 +170,7 @@ alias gp="git push"
 alias gd="git diff"
 alias gpu="git pull"
 alias rmclass="rm -r *.class"
+alias cfpre='for i in {a,b,c,d,e}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
 set -o vi
 
 function hlrun {
