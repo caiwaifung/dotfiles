@@ -168,10 +168,14 @@ alias gs="git status"
 alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
-alias gpu="git pull"
-alias rmclass="rm -r *.class"
+alias gpull="git pull"
 alias cfpre='for i in {a,b,c,d,e}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
-alias cfclear='rm a b c d e *.in'
+alias cfpref='for i in {a,b,c,d,e,f}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
+alias cfpreg='for i in {a,b,c,d,e,f,g}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
+alias cfpreh='for i in {a,b,c,d,e,f,g,h}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
+alias cfclear='rm a b c d e f g h i *.in'
+alias blclear='rm *.blend1'
+alias jaclear="rm -r *.class"
 set -o vi
 
 function hlrun {
