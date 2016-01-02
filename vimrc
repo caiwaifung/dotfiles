@@ -28,6 +28,7 @@ set autochdir
 au BufNewFile,BufRead *.rs set filetype=rust
 au BufNewFile,BufRead *.scala set filetype=scala
 au Filetype scala setlocal ts=2 sts=2 sw=2
+au Filetype make setlocal noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Display
@@ -144,8 +145,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_cpp_compiler_options=" -Wall -Wextra -Wconversion -std=c++0x"
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Plugin 'davidhalter/jedi-vim'
-filetype plugin indent on
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+"Bundle 'gmarik/vundle'
+"Plugin 'davidhalter/jedi-vim'
+"filetype plugin indent on
