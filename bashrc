@@ -11,7 +11,7 @@ function __promptline_ps1 {
     slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
     [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
     # section "a" slices
-    #__promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+    __promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   
     # section "b" header
     slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -42,13 +42,14 @@ function __promptline_ps1 {
 }
 function __promptline_vcs_branch {
     local branch
-    local branch_symbol=" "
+    local branch_symbol=""
   
     # git
     if hash git 2>/dev/null; then
         if branch=$( { git symbolic-ref --quiet HEAD || git rev-parse --short HEAD; } 2>/dev/null ); then
             branch=${branch##*/}
-            printf "%s" "${branch_symbol}${branch:-unknown}"
+            #printf "%s" "${branch_symbol}${branch:-unknown}"
+            printf "%s" "${branch_symbol}"
             return
         fi
     fi
@@ -155,7 +156,6 @@ function __promptline {
 if [[ ! "$PROMPT_COMMAND" == *__promptline* ]]; then
     PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"
 fi
-
 
 alias o="open"
 alias l="ls"
