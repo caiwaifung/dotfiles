@@ -37,9 +37,9 @@ syntax on
 colorscheme molokai
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
-hi MatchParen ctermbg=red
-hi SyntasticError cterm=NONE ctermbg=red
-hi SyntasticWarning cterm=NONE ctermbg=black
+hi MatchParen ctermbg=yellow
+hi SyntasticError cterm=NONE ctermbg=green
+hi SyntasticWarning cterm=NONE ctermbg=green
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Text
@@ -145,8 +145,20 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_cpp_compiler_options=" -Wall -Wextra -Wconversion -std=c++0x"
 
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-"Bundle 'gmarik/vundle'
-"Plugin 'davidhalter/jedi-vim'
-"filetype plugin indent on
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"Plugin 'scrooloose/syntastic'
+call vundle#end()
+filetype plugin indent on
+
+"let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"let g:ycm_confirm_extra_conf = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_register_as_syntastic_checker = 0
+"set tags+=./.tags

@@ -11,7 +11,7 @@ function __promptline_ps1 {
     slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
     [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
     # section "a" slices
-    __promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+    #__promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   
     # section "b" header
     slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -157,6 +157,7 @@ if [[ ! "$PROMPT_COMMAND" == *__promptline* ]]; then
     PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"
 fi
 
+export CLICOLOR=1
 alias o="open"
 alias l="ls"
 alias a="ls -la"
@@ -170,12 +171,13 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gpull="git pull"
+alias fbpre='for i in {a,b,c,d}; do cp ~/algo/template/0-cc/fb.cc $i.cpp; done'
 alias cfpre='for i in {a,b,c,d,e}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
 alias cfpref='for i in {a,b,c,d,e,f}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
 alias cfpreg='for i in {a,b,c,d,e,f,g}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
 alias cfpreh='for i in {a,b,c,d,e,f,g,h}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
-alias cfclear='rm a b c d e f g h i *.in'
-alias blclear='rm *.blend1'
+alias cfclear='rm -v -f a b c d e f g h i *.in'
+alias blclear='rm -v -f *.blend1'
 alias jaclear="rm -r *.class"
 set -o vi
 

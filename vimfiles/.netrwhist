@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/caiwaifung/repo/dotfiles/vimfiles/plugin'
 let g:netrw_dirhist_2='/Users/caiwaifung/repo/blender/.git'
 let g:netrw_dirhist_3='/Users/caiwaifung/repo/dotfiles'
+let g:netrw_dirhist_4='/Users/fqw/Google Drive/projects/ear-training/getting-started-python/2-structured-data'
+let g:netrw_dirhist_5='/Users/fqw/Google Drive/projects/ear-training/getting-started-python/2-structured-data/bookshelf'
+let g:netrw_dirhist_6='/Users/fqw/Google Drive/projects/ear-training/getting-started-python/2-structured-data/bookshelf/templates'
