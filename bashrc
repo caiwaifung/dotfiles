@@ -3,7 +3,7 @@
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 export CLICOLOR=1
-export PS1="\[$(tput bold)\]\[\033[38;5;242m\]\t\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;19m\]\w\[\033[38;5;9m\] > \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\[\033[38;5;242m\]\t\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;214m\]\w\[\033[38;5;9m\] > \[$(tput sgr0)\]"
 function printcolors {
     for i in `seq 1 256`; do
         printf "\033[38;5;${i}m$i ";
