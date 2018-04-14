@@ -37,9 +37,9 @@ syntax on
 color darcula
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
-hi MatchParen ctermbg=yellow
-hi SyntasticError cterm=NONE ctermbg=green
-hi SyntasticWarning cterm=NONE ctermbg=green
+hi MatchParen ctermbg=darkmagenta
+hi SyntasticError cterm=NONE ctermbg=black
+hi SyntasticWarning cterm=NONE ctermbg=black
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Text
