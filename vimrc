@@ -153,7 +153,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-"let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 "Plugin 'scrooloose/syntastic'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
@@ -165,7 +165,7 @@ call glaive#Install()
 Glaive codefmt clang_format_style='{IndentWidth: 4}'
 
 "
-""let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 ""let g:ycm_confirm_extra_conf = 0
 ""let g:syntastic_always_populate_loc_list = 1
 ""let g:ycm_collect_identifiers_from_tags_files = 1
