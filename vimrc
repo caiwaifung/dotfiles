@@ -66,6 +66,7 @@ set foldmethod=marker
 noremap <C-C> <Esc>:noh<CR><Esc>
 let mapleader=' '
 let g:EasyMotion_leader_key='<Leader>' 
+nnoremap ,f :FormatCode<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcuts
@@ -146,16 +147,23 @@ endif
 
 "let g:syntastic_cpp_compiler_options=" -Wall -Wextra -Wconversion -std=c++0x"
 "
-"set nocompatible
-"filetype off
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-""Plugin 'scrooloose/syntastic'
-"call vundle#end()
-"filetype plugin indent on
+"Plugin 'scrooloose/syntastic'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+call vundle#end()
+filetype plugin indent on
+call glaive#Install()
+
+Glaive codefmt clang_format_style='{IndentWidth: 4}'
+
 "
 ""let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 ""let g:ycm_confirm_extra_conf = 0
