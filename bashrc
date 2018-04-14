@@ -1,185 +1,28 @@
 [[ ${TERM} == "xterm-256color" ]] || return 1
 
-function __promptline_last_exit_code {
-    [[ $last_exit_code -gt 0 ]] || return 1;
-    printf "%s" "$last_exit_code"
-}
-function __promptline_ps1 {
-    local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
-
-    # section "a" header
-    slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
-    [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
-    # section "a" slices
-    #__promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  
-    # section "b" header
-    slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
-    [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
-    # section "b" slices
-    __promptline_wrapper "$(date "+%H:%M:%S")" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  
-    # section "c" header
-    slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
-    [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
-    # section "c" slices
-    __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  
-    # section "y" header
-    slice_prefix="${y_bg}${sep}${y_fg}${y_bg}${space}" slice_suffix="$space${y_sep_fg}" slice_joiner="${y_fg}${y_bg}${alt_sep}${space}" slice_empty_prefix="${y_fg}${y_bg}${space}"
-    [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
-    # section "y" slices
-    __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  
-    # section "warn" header
-    #slice_prefix="${warn_bg}${sep}${warn_fg}${warn_bg}${space}" slice_suffix="$space${warn_sep_fg}" slice_joiner="${warn_fg}${warn_bg}${alt_sep}${space}" slice_empty_prefix="${warn_fg}${warn_bg}${space}"
-    #[ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
-    # section "warn" slices
-    #__promptline_wrapper "$(__promptline_last_exit_code)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  
-    # close sections
-    printf "%s" "${reset_bg}${sep}$reset$space"
-}
-function __promptline_vcs_branch {
-    local branch
-    local branch_symbol=""
-  
-    # git
-    if hash git 2>/dev/null; then
-        if branch=$( { git symbolic-ref --quiet HEAD || git rev-parse --short HEAD; } 2>/dev/null ); then
-            branch=${branch##*/}
-            #printf "%s" "${branch_symbol}${branch:-unknown}"
-            printf "%s" "${branch_symbol}"
-            return
-        fi
-    fi
-    return 1
-}
-function __promptline_cwd {
-    local dir_limit="3"
-    local truncation="..."
-    local part_count=0
-    local formatted_cwd=""
-    #local dir_sep="/"
-    local tilde="~"
-    #local truncation="···"
-    local dir_sep="  "
-
-    local cwd="${PWD/#$HOME/$tilde}"
-
-    # get first char of the path, i.e. tilde or slash
-    local first_char=${cwd::1}
-    if [[ $first_char == "/" ]]; then
-        first_char=""
-    fi
-
-    # remove leading tilde
-    cwd="${cwd#\~}"
-
-    while [[ "$cwd" == */* && "$cwd" != "/" ]]; do
-        # pop off last part of cwd
-        local part="${cwd##*/}"
-        cwd="${cwd%/*}"
-
-        formatted_cwd="$dir_sep$part$formatted_cwd"
-        part_count=$((part_count+1))
-
-        [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
-    done
-
-    if [[ $first_char == "" && $formatted_cwd == "" ]]; then
-        formatted_cwd="/"
-    fi
-    printf "%s" "$first_char$formatted_cwd"
-}
-
-function __promptline_wrapper {
-  # wrap the text in $1 with $2 and $3, only if $1 is not empty
-  # $2 and $3 typically contain non-content-text, like color escape codes and separators
-  [[ -n "$1" ]] || return 1
-  printf "%s" "${2}${1}${3}"
-}
-
-function __promptline {
-    local last_exit_code="$?"
-
-    local esc=$'[' end_esc=m
-    local noprint='\[' end_noprint='\]'
-    local space=" "
-    local sep=""
-    local rsep=""
-    local alt_sep=""
-    local alt_rsep=""
-
-    # colors
-    local wrap="$noprint$esc" end_wrap="$end_esc$end_noprint"
-    local reset="${wrap}0${end_wrap}"
-    local reset_bg="${wrap}49${end_wrap}"
-    local a_fg="${wrap}38;5;222${end_wrap}"
-    local a_bg="${wrap}48;5;241${end_wrap}"
-    local a_sep_fg="${wrap}38;5;241${end_wrap}"
-    local b_fg="${wrap}38;5;0${end_wrap}"
-    local b_bg="${wrap}48;5;239${end_wrap}"
-    local b_sep_fg="${wrap}38;5;239${end_wrap}"
-    local c_fg="${wrap}38;5;178${end_wrap}"
-    local c_bg="${wrap}48;5;237${end_wrap}"
-    local c_sep_fg="${wrap}38;5;237${end_wrap}"
-    local warn_fg="${wrap}38;5;232${end_wrap}"
-    local warn_bg="${wrap}48;5;1${end_wrap}"
-    local warn_sep_fg="${wrap}38;5;1${end_wrap}"
-    local y_fg="${wrap}38;5;196${end_wrap}"
-    local y_bg="${wrap}48;5;236${end_wrap}"
-    local y_sep_fg="${wrap}38;5;236${end_wrap}"
-
-    # display error message
-    local h=`history | tail -n 2`
-    if [[ "$__last_history_dump" != "" && "$h" != "$__last_history_dump" ]]; then
-        if [[ $last_exit_code != 0 ]]; then
-            local cl1="\e[38;5;7m\e[48;5;232m"
-            local cl2="\e[38;5;52m"
-            local end="\e[0m"
-            local msg=" $cl1""${alt_sep} Exit Code: ""$cl2$last_exit_code $end"
-            echo `printf "$msg"`
-        fi
-        #echo ""
-    fi
-    export __last_history_dump=$h
-
-    # root user
-    if [[ "$EUID" -eq 0 ]]; then
-        local a_bg=$warn_bg
-        local a_sep_fg=$warn_sep_fg
-    fi
-    PS1="$(__promptline_ps1)"
-}
-
-if [[ ! "$PROMPT_COMMAND" == *__promptline* ]]; then
-    PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"
-fi
-
 export CLICOLOR=1
+export PS1="\[\033[38;5;242m\]\t\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;3m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]> \[$(tput sgr0)\]"
+
 alias o="open"
 alias l="ls"
-alias a="ls -la"
+alias ll="ls -l"
+alias la="ls -la"
 alias c="cd"
 alias v="vim"
 alias vi="vim"
 alias t="tree"
+alias g="git"
 alias ga="git add"
 alias gs="git status"
 alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gpull="git pull"
-alias fbpre='for i in {a,b,c,d}; do cp ~/algo/template/0-cc/fb.cc $i.cpp; done'
-alias cfpre='for i in {a,b,c,d,e}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
-alias cfpref='for i in {a,b,c,d,e,f}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
-alias cfpreg='for i in {a,b,c,d,e,f,g}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
-alias cfpreh='for i in {a,b,c,d,e,f,g,h}; do cp ~/algo/template/0-cc/base.cc $i.cpp; done'
-alias cfclear='rm -v -f a b c d e f g h i *.in'
-alias blclear='rm -v -f *.blend1'
-alias jaclear="rm -r *.class"
 set -o vi
+
+function go() { [ -e $1.cc ] || cat ~/algo/template/base/{header.h,main-empty.h} >$1.cc; vim $1.cc; }
+function goc() { [ -e $1.cc ] || cat ~/algo/template/base/{header.h,main-cases.h} >$1.cc; vim $1.cc; }
+#function goc { cat ~/algo/template/base/{header.h,main-cases.h} $1.cc }
 
 function hlrun {
     if [[ $# != 2 && $# != 3 ]]; then

@@ -143,22 +143,23 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_cpp_compiler_options=" -Wall -Wextra -Wconversion -std=c++0x"
 
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"Plugin 'scrooloose/syntastic'
-call vundle#end()
-filetype plugin indent on
-
+"let g:syntastic_cpp_compiler_options=" -Wall -Wextra -Wconversion -std=c++0x"
+"
+"set nocompatible
+"filetype off
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"let g:ycm_confirm_extra_conf = 0
-"let g:syntastic_always_populate_loc_list = 1
-"let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_register_as_syntastic_checker = 0
-"set tags+=./.tags
+""Plugin 'scrooloose/syntastic'
+"call vundle#end()
+"filetype plugin indent on
+"
+""let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+""let g:ycm_confirm_extra_conf = 0
+""let g:syntastic_always_populate_loc_list = 1
+""let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_register_as_syntastic_checker = 0
+""set tags+=./.tags
