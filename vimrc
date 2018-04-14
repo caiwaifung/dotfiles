@@ -34,7 +34,7 @@ au Filetype make setlocal noexpandtab
 " => Display
 """""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-colorscheme molokai
+color darcula
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
 hi MatchParen ctermbg=yellow
@@ -169,3 +169,4 @@ Glaive codefmt clang_format_style='{IndentWidth: 4}'
 ""let g:ycm_collect_identifiers_from_tags_files = 1
 "let g:ycm_register_as_syntastic_checker = 0
 ""set tags+=./.tags
+
