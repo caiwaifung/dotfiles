@@ -71,11 +71,10 @@ nnoremap ,f :FormatCode<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""
-" {{{
 function! Compile()
     execute 'w'
     if (&filetype == 'cpp' || &filetype == 'cc')
-        execute '!time g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -O2 -DDEBUG --std=c++0x'
+        execute '!time g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -Wno-sign-conversion -O2 -DDEBUG --std=c++14'
         return
     endif
     if (&filetype == 'c')
@@ -126,7 +125,6 @@ function! Run(arg)
     endif
     echom 'Unable to run! (unknown filetype [' . &filetype . '])'
 endfunction
-" }}}
 
 if has("win32")
     nmap <F8>  :call Compile()<CR>
