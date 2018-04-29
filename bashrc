@@ -27,11 +27,11 @@ alias t="tree"
 alias g="git"
 alias ga="git add"
 alias gs="git status"
-alias gcm="git commit -m"
+alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gpull="git pull"
-alias cfclear="rm -vf a b c d e f g"
+alias cfclear="rm -vf {a,b,c,d,e,f,g}{,.out}"
 set -o vi
 
 function go() { [ -e $1.cc ] || cat ~/algo/template/base/{header.h,main-empty.h} >$1.cc; vim $1.cc; }

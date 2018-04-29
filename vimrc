@@ -75,7 +75,7 @@ nnoremap ,f :FormatCode<CR>
 function! Compile()
     execute 'w'
     if (&filetype == 'cpp' || &filetype == 'cc')
-        execute '!time g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -Wno-sign-conversion -O2 -DDEBUG --std=c++14'
+        execute '!time g++ % -o %:t:r -Wall -Wconversion -Wextra -Wshadow -Wno-sign-conversion -fsanitize=address -O2 -DDEBUG --std=c++14'
         return
     endif
     if (&filetype == 'c')
