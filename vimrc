@@ -14,6 +14,7 @@ set incsearch
 
 set noerrorbells
 set visualbell
+set cc=81
 
 set mouse=a
 
@@ -160,7 +161,11 @@ call vundle#end()
 filetype plugin indent on
 call glaive#Install()
 
-Glaive codefmt clang_format_style='{IndentWidth: 4}'
+Glaive codefmt clang_format_style='{
+            \ IndentWidth: 4,
+            \ AllowShortIfStatementsOnASingleLine: true,
+            \ AllowShortLoopsOnASingleLine: true,
+            \ }'
 
 "
 "let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
