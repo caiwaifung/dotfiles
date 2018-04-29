@@ -16,6 +16,9 @@ function printcolors {
     echo
 }
 
+alias bb="bazel build"
+alias br="bazel run"
+alias bt="bazel test"
 alias o="open"
 alias l="ls"
 alias ll="ls -l"
