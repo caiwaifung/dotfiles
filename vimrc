@@ -152,7 +152,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 "Plugin 'scrooloose/syntastic'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
@@ -166,6 +166,8 @@ Glaive codefmt clang_format_style='{
             \ AllowShortIfStatementsOnASingleLine: true,
             \ AllowShortLoopsOnASingleLine: true,
             \ }'
+
+autocmd BufWritePost *.cc,*.cpp YcmForceCompileAndDiagnostics
 
 "
 "let g:ycm_global_ycm_extra_conf = '/Users/fqw/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
