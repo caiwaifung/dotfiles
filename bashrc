@@ -18,7 +18,8 @@ function printcolors {
 
 alias bb="bazel build"
 alias br="bazel run"
-alias bt="bazel test"
+alias bt="bazel test --test_output=all"
+alias bta="bazel test --test_output=all ..."
 alias o="open"
 alias l="ls"
 alias ll="ls -l"
