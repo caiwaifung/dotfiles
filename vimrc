@@ -105,7 +105,7 @@ endfunction
 function! Run(arg)
     execute 'w'
     if (&filetype == 'c' || &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'rust')
-        execute '!./%:t:r' . a:arg
+        execute '!time ./%:t:r' . a:arg
         return
     endif
     if (&filetype == 'scala')
