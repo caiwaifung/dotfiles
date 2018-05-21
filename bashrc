@@ -36,7 +36,7 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gpull="git pull"
-alias cfclear="rm -vf {a,b,c,d,e,f,g}{,.out}"
+alias cfclear="rm -vf {a,b,c,d,e,f,g}{,.in,.out}"
 set -o vi
 
 function go() { [ -e $1.cc ] || cat ~/algo/template/base/{header.h,main-empty.h} >$1.cc; vim $1.cc; }
