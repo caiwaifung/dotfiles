@@ -52,6 +52,8 @@ flags = [
 '/Users/qiweifeng/repo/googletest/googletest/include',
 '-isystem',
 '/Users/qiweifeng/repo/googletest/googlemock/include',
+'-isystem',
+'/Users/qiweifeng/hera',
 ]
 
 
